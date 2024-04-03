@@ -1,18 +1,36 @@
 /* styles.css */
 header {
-    background-color: #333;
+    background-color: #007bff; /* Blue background color */
     color: #fff;
-    padding: 10px;
+    padding: 20px; /* Increased padding */
     text-align: center;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Added box shadow for a subtle effect */
+  }
+  
+  header nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  header nav ul li {
+    display: inline;
+    margin-right: 20px; /* Increased spacing between navigation items */
+  }
+  
+  header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
   }
   
   footer {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
+    background-color: #f8f9fa; /* Light gray background color */
+    color: #333;
+    padding: 20px; /* Increased padding */
     text-align: center;
     position: fixed;
     bottom: 0;
     width: 100%;
+    box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1); /* Added box shadow for a subtle effect */
   }
   
