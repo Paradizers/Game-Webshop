@@ -18,4 +18,4 @@ Voor dit project zullen we gebruikmaken van verschillende technologieën, waaron
 - JavaScript
 - Framework zoals Angular
 
-&copy; 2024 Gaming Webshop Project
+&copy; 2024 Tobias Van der Vaart
