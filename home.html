@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamecatalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .game {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .game button {
+            margin-left: 10px;
+        }
+
+        #cart {
+            display: none;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="gameList">
+    <!-- Dynamically generated game list will be inserted here -->
+</div>
+
+<div class="container" id="cart">
+    <h2>Winkelmandje</h2>
+    <ul id="cartItems">
+        <!-- Dynamically generated cart items will be inserted here -->
+    </ul>
+    <p id="totalPrice">Totaalprijs: $0</p>
+    <button onclick="calculateTotal()">Bereken Prijs</button>
+</div>
+
+<script>
+    // Simpele lijst met games
+    const games = [
+        { title: "Game 1", price: 20 },
+        { title: "Game 2", price: 25 },
+        { title: "Game 3", price: 30 },
+        { title: "Game 4", price: 15 },
+        { title: "Game 5", price: 40 },
+    ];
+
+    // Deze functie maakt een lijst van games
+    function generateGameList() {
+        const gameListDiv = document.getElementById("gameList");
+        gameListDiv.innerHTML = "";
+
+        games.forEach(game => {
+            const gameDiv = document.createElement("div");
+            gameDiv.classList.add("game");
+            gameDiv.innerHTML = `
+                <p>${game.title}</p>
+                <p>Prijs: $${game.price}</p>
+                <button onclick="addToCart('${game.title}', ${game.price})">Voeg toe aan winkelmandje</button>
+            `;
+            gameListDiv.appendChild(gameDiv);
+        });
+    }
+
+    // Deze functie voegt een game toe aan het winkelmandje
+    function addToCart(title, price) {
+        const cartItemsList = document.getElementById("cartItems");
+        const cartItem = document.createElement("li");
+        cartItem.textContent = `${title} - $${price}`;
+        cartItemsList.appendChild(cartItem);
+        updateTotalPrice(price);
+    }
+
+    // Deze functie werkt de totaalprijs bij
+    function updateTotalPrice(price) {
+        const totalPriceElement = document.getElementById("totalPrice");
+        const currentTotalPrice = parseFloat(totalPriceElement.textContent.split("$")[1]);
+        const newTotalPrice = currentTotalPrice + price;
+        totalPriceElement.textContent = `Totaalprijs: $${newTotalPrice.toFixed(2)}`;
+    }
+
+    // Deze functie wordt uitgevoerd wanneer op Bereken Prijs wordt geklikt
+    function calculateTotal() {
+        alert("Totaalprijs berekend!");
+        // Hier kan extra logica worden toegevoegd om de totaalprijs te berekenen
+    }
+
+    // Roep de functie aan om de lijst van games te maken
+    generateGameList();
+</script>
+
+</body>
+</html>
